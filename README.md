@@ -1,427 +1,479 @@
-AI & Data Science Projects
+# 🚢 Titanic Survival Prediction — Machine Learning Project
 
-A collection of practical projects focused on Machine Learning, Python, Data Analysis, SQL, and Artificial Intelligence.
+A complete Machine Learning project that predicts whether a passenger survived the Titanic disaster using passenger information such as class, sex, age, family relationships, fare, and port of embarkation.
 
-This repository documents my learning journey through hands-on projects, beginning with machine learning fundamentals and gradually moving toward more advanced AI and Data Science applications.
-
----
-
-Student Details
-
-Particular| Details
-Name| Pranshi Dwivedi
-Course| M.Sc. Mathematics with AI & Data Science
-Project Type| Academic / Learning Projects
-Domain| Artificial Intelligence, Machine Learning & Data Science
-GitHub| "Pranshi Dwivedi" (https://github.com/pranshidwivedi018-source)
+The project demonstrates a practical ML workflow: **data preprocessing → feature engineering → feature selection → model training → prediction → evaluation → model saving**.
 
 ---
 
-Project Overview
+## 👥 Team Members
 
-The purpose of this repository is to implement and demonstrate important concepts of Artificial Intelligence and Data Science using practical datasets and machine-learning workflows.
-
-The projects focus on:
-
-1. Data Collection and Understanding
-2. Data Preprocessing
-3. Exploratory Data Analysis
-4. Feature Engineering
-5. Machine Learning
-6. Model Training
-7. Prediction
-8. Model Evaluation
-
-The repository will be continuously updated as new projects are developed.
+| Name | Roll No. | Enrollment No. | Role |
+|---|---:|---|---|
+| **Pranshi Dwivedi** | 25225100021 | CSJMA25000006150 | **Team Captain** |
+| Anshika Shukla | 2522510006 | CSJMA25000035668 | Team Member |
+| Rishabh Tiwari | 255225100025 | CSJMA25000006152 | Team Member |
+| Bhanu Pratap Singh Katiyar | 25225100009 | CSJMA252500089656 | Team Member |
 
 ---
 
-1. Titanic Survival Prediction
+## 📌 Project Overview
 
-Project Description
+The Titanic Survival Prediction project uses historical passenger data from the Titanic to build a binary classification model.
 
-The Titanic Survival Prediction project is a supervised machine-learning classification project.
+The model learns patterns from passenger information and predicts one of two outcomes:
 
-The objective is to predict whether a passenger survived the Titanic disaster based on available passenger information such as age, gender, passenger class, fare, and other relevant attributes.
+- **0 → Not Survived**
+- **1 → Survived**
 
-Problem Type
-
-Binary Classification
-
-Target Variable
-
-Survived
-
-Possible target values:
-
-0 → Did Not Survive
-1 → Survived
+The final model is **Logistic Regression**, a commonly used classification algorithm for predicting binary outcomes.
 
 ---
 
-Problem Statement
+## 🎯 Problem Statement
 
-The Titanic dataset contains information about passengers who travelled on the RMS Titanic.
+The Titanic disaster resulted in many passenger deaths. Survival was influenced by factors such as passenger class, sex, age, fare, family relationships, and embarkation port.
 
-The objective of this project is to build a machine-learning workflow that learns patterns from historical passenger data and predicts the survival outcome of passengers.
-
-The project demonstrates how raw data can be transformed into useful features and then used for machine-learning prediction.
-
----
-
-2. Dataset
-
-The project uses the Titanic dataset containing passenger information and survival outcomes.
-
-Important Features
-
-Some important variables include:
-
-Feature| Description
-"PassengerId"| Unique passenger identifier
-"Pclass"| Passenger class
-"Name"| Passenger name
-"Sex"| Passenger gender
-"Age"| Passenger age
-"SibSp"| Number of siblings/spouses aboard
-"Parch"| Number of parents/children aboard
-"Ticket"| Ticket number
-"Fare"| Passenger fare
-"Cabin"| Cabin information
-"Embarked"| Port of embarkation
-"Survived"| Survival target
+**Problem:**  
+Build a Machine Learning model that can predict whether a passenger would survive based on the available passenger information.
 
 ---
 
-3. Project Workflow
+## 🧠 What Does the Model Do?
 
-The project follows the following machine-learning pipeline:
+The model takes passenger-related features as input, processes them using the same preprocessing steps used during training, and predicts:
 
-Raw Dataset
-     │
-     ▼
-Data Understanding
-     │
-     ▼
-Data Inspection
-     │
-     ▼
-Missing Value Analysis
-     │
-     ▼
-Data Cleaning
-     │
-     ▼
+```text
+Passenger Information
+        ↓
+Data Preprocessing
+        ↓
+Feature Engineering
+        ↓
 Feature Selection
-     │
-     ▼
-Data Encoding
-     │
-     ▼
-Train-Test Split
-     │
-     ▼
-Machine Learning Model
-     │
-     ▼
-Prediction
-     │
-     ▼
-Model Evaluation
+        ↓
+Logistic Regression
+        ↓
+Survival Prediction
+        ↓
+0 = Not Survived / 1 = Survived
+```
 
 ---
 
-4. Data Preprocessing
+## 📊 Dataset
 
-Data preprocessing is an important stage of the project.
+The project uses the standard Titanic training dataset (`train.csv`).
 
-The dataset is inspected and unnecessary or unsuitable columns are removed before model training.
+### Original Dataset
 
-Operations performed
+- **Rows:** 891
+- **Columns:** 12
+- **Target:** `Survived`
 
-- Dataset loading
-- Data inspection
-- Missing-value analysis
-- Handling missing values
-- Removing unnecessary columns
-- Encoding categorical variables
-- Preparing features and target
-- Train-test splitting
+### Original Columns
 
-The following columns were removed because they were not directly used as model features:
+```text
+PassengerId
+Survived
+Pclass
+Name
+Sex
+Age
+SibSp
+Parch
+Ticket
+Fare
+Cabin
+Embarked
+```
 
+### Target Variable
+
+| Value | Meaning |
+|---:|---|
+| 0 | Not Survived |
+| 1 | Survived |
+
+---
+
+## 🔧 Data Preprocessing
+
+The dataset contains missing values and categorical variables, so preprocessing is performed before model training.
+
+### 1. Missing Values
+
+**Age**
+
+Missing age values are filled using the **median calculated from the training data**.
+
+**Embarked**
+
+Missing values are filled using the **mode calculated from the training data**.
+
+**Cabin**
+
+The `Cabin` column contains a large number of missing values, so it is removed from the final modeling dataset.
+
+### 2. Removed Columns
+
+The following columns are removed because they are not directly used as final predictive features:
+
+```text
 PassengerId
 Name
 Ticket
 Cabin
-
-The remaining useful features are prepared for machine-learning analysis.
-
----
-
-5. Exploratory Data Analysis
-
-Exploratory Data Analysis helps understand patterns and relationships within the Titanic dataset.
-
-The analysis can include:
-
-- Survival distribution
-- Gender vs survival
-- Passenger class vs survival
-- Age distribution
-- Fare distribution
-- Correlation analysis
-- Missing-value analysis
-
-EDA helps identify important patterns before model development.
+```
 
 ---
 
-6. Feature Engineering & Selection
+## ⚙️ Feature Engineering
 
-Feature selection is used to identify useful variables for prediction.
+Several transformations are applied to prepare the data for Machine Learning.
 
-Important passenger characteristics such as:
+### Sex Encoding
 
-- Passenger Class
-- Gender
-- Age
-- Number of Siblings/Spouses
-- Number of Parents/Children
-- Fare
-- Embarkation Port
+The categorical `Sex` feature is converted into a numerical representation.
 
-can provide useful information for predicting survival.
+### One-Hot Encoding
 
-Categorical variables are converted into numerical representations before model training.
+The `Embarked` feature is converted into:
 
----
+```text
+Embarked_C
+Embarked_Q
+Embarked_S
+```
 
-7. Machine Learning
+### Fare Transformation
 
-This project is based on Supervised Learning.
+A logarithmic transformation is applied to `Fare`:
 
-Learning Type
+```text
+Fare_log
+```
 
-Supervised Learning
-        ↓
-Classification
-        ↓
-Binary Classification
+This helps reduce the effect of highly skewed fare values.
 
-The model learns from labelled training data where the survival outcome is already known.
+### Standardization
 
-The trained model is then used to predict survival for unseen test data.
+Numerical features are standardized using **Z-score standardization**.
 
----
+The transformed features include:
 
-8. Model Evaluation
-
-After training, the machine-learning model can be evaluated using classification metrics.
-
-Important evaluation metrics include:
-
-Accuracy
-
-Measures the percentage of correctly predicted observations.
-
-Precision
-
-Measures how many predicted positive cases were actually positive.
-
-Recall
-
-Measures how many actual positive cases were correctly identified.
-
-F1-Score
-
-Provides a balance between precision and recall.
-
-Confusion Matrix
-
-Shows:
-
-True Positive
-True Negative
-False Positive
-False Negative
-
-These metrics help evaluate the performance of the classification model.
+```text
+Pclass_std
+Age_std
+SibSp_std
+Parch_std
+Fare_log_std
+```
 
 ---
 
-9. Technologies Used
+## 🔍 Feature Selection
 
-Programming Language
+The notebook explores multiple statistical and ML-based feature-selection techniques:
 
-- Python
+- Variance Threshold
+- Pearson Correlation
+- Chi-Square Test
+- ANOVA F-Test
+- Mutual Information
 
-Libraries
-
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-
-Development Environment
-
-- Google Colab
-- Jupyter Notebook
-- GitHub
+These techniques help understand which features contain useful information for predicting survival.
 
 ---
 
-10. Repository Structure
+## ⭐ Final Features Used by the Model
 
-The current repository contains:
+The final Logistic Regression model uses:
 
-ai_data-science-project/
+```text
+Pclass_std
+Sex
+Age_std
+SibSp_std
+Parch_std
+Fare_log_std
+Embarked_C
+Embarked_Q
+Embarked_S
+```
+
+---
+
+## 🤖 Machine Learning Model
+
+### Logistic Regression
+
+The final model is:
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+```
+
+Logistic Regression is suitable for this project because the target variable has two possible classes:
+
+```text
+0 → Not Survived
+1 → Survived
+```
+
+The model estimates the probability of survival and converts it into a class prediction.
+
+---
+
+## 📚 Train-Test Split
+
+The dataset is divided into:
+
+- **80% training data**
+- **20% testing data**
+
+The test set contains **179 passengers**.
+
+The model learns patterns from the training data and is evaluated on the unseen test data.
+
+---
+
+## 🔮 Prediction
+
+Predictions are generated using:
+
+```python
+y_pred = model.predict(X_test)
+```
+
+The predictions are compared with the actual survival values to measure model performance.
+
+---
+
+## 📈 Model Performance
+
+### Test Accuracy
+
+The final Logistic Regression model achieved:
+
+# **83.24% Accuracy**
+
+This means the model correctly classified approximately 83 out of every 100 passengers in the **179-passenger held-out test set**.
+
+> **Important:** 83.24% is the accuracy on this project's test set, not a guarantee of performance on all Titanic passengers or future datasets.
+
+---
+
+## 📊 Confusion Matrix
+
+The model produced the following confusion matrix:
+
+```text
+[[103, 12],
+ [ 18, 46]]
+```
+
+| | Predicted Not Survived | Predicted Survived |
+|---|---:|---:|
+| **Actual Not Survived** | 103 | 12 |
+| **Actual Survived** | 18 | 46 |
+
+### Interpretation
+
+- **True Negative (TN): 103** — correctly predicted passengers who did not survive.
+- **False Positive (FP): 12** — predicted survival when the passenger did not survive.
+- **False Negative (FN): 18** — predicted non-survival when the passenger actually survived.
+- **True Positive (TP): 46** — correctly predicted passengers who survived.
+
+---
+
+## 📋 Classification Report
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---:|---:|---:|---:|
+| Not Survived | 0.85 | 0.90 | 0.87 | 115 |
+| Survived | 0.79 | 0.72 | 0.75 | 64 |
+| **Accuracy** | | | **0.83** | **179** |
+| Macro Avg | 0.82 | 0.81 | 0.81 | 179 |
+| Weighted Avg | 0.83 | 0.83 | 0.83 | 179 |
+
+---
+
+## 💾 Model Saving
+
+After training, the Logistic Regression model is saved using Python's `pickle` module:
+
+```python
+with open('logistic_regression_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+```
+
+This allows the trained model to be reused without training it again.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Matplotlib**
+- **SciPy**
+- **Scikit-learn**
+- **Jupyter Notebook**
+- **Google Colab**
+- **GitHub**
+
+---
+
+## 📁 Project Structure
+
+```text
+Titanic-Survival-Prediction/
 │
-├── README.md
-├── .gitignore
-│
-└── Titanic_survial_Prediction (1).ipynb
+├── Titanic_survial_Prediction (1).ipynb
+├── train.csv
+├── logistic_regression_model.pkl
+└── README.md
+```
+
+> File names may vary depending on how the project is uploaded to GitHub.
 
 ---
 
-11. Notebook
+## ▶️ How to Run the Project
 
-The main project implementation is available in:
+### Option 1 — Google Colab
 
-Titanic_survial_Prediction (1).ipynb
+1. Open the notebook.
+2. Upload `train.csv` when requested.
+3. Run the notebook cells from top to bottom.
+4. The notebook performs preprocessing, feature engineering, feature selection, model training, and evaluation.
+5. View the final accuracy and evaluation results.
 
-The notebook contains the data-analysis and machine-learning workflow used for the Titanic survival prediction project.
-
----
-
-12. Skills Demonstrated
-
-Through this project, I am developing practical skills in:
-
-- Python Programming
-- NumPy
-- Pandas
-- Data Cleaning
-- Data Preprocessing
-- Exploratory Data Analysis
-- Feature Selection
-- Categorical Encoding
-- Machine Learning
-- Classification
-- Model Evaluation
-- Data Visualization
-- GitHub & Version Control
-
----
-
-13. How to Run the Project
-
-Option 1 — Google Colab
-
-1. Open the repository.
-2. Open the Titanic notebook.
-3. Upload the required dataset.
-4. Run the notebook cells sequentially.
-5. Observe the preprocessing, analysis, predictions, and evaluation results.
-
-Option 2 — Jupyter Notebook
-
-Clone the repository:
-
-git clone https://github.com/pranshidwivedi018-source/ai_data-science-project.git
-
-Navigate to the project directory:
-
-cd ai_data-science-project
+### Option 2 — Jupyter Notebook
 
 Install the required libraries:
 
-pip install numpy pandas matplotlib seaborn scikit-learn
+```bash
+pip install pandas numpy matplotlib scipy scikit-learn
+```
 
-Open the notebook:
+Then open:
 
-jupyter notebook
-
-Then run:
-
+```text
 Titanic_survial_Prediction (1).ipynb
+```
+
+Make sure `train.csv` is available in the expected location and run the notebook.
 
 ---
 
-14. Future Projects
+## 🌍 Real-World Machine Learning Relevance
 
-This repository will be expanded with additional projects related to:
+Although this project uses the Titanic dataset, the workflow represents a common real-world Machine Learning process.
 
-- Machine Learning
-- Data Science
-- Artificial Intelligence
-- SQL & DBMS
-- Data Visualization
-- Deep Learning
-- Natural Language Processing
-- AI-based Applications
-- Real-world Data Analysis
+Similar classification approaches can be used for:
 
-Future projects will be added as separate folders or notebooks to maintain a structured portfolio.
+- Customer churn prediction
+- Loan approval prediction
+- Disease-risk classification
+- Fraud detection
+- Employee attrition prediction
+- Customer response prediction
 
----
-
-15. Project Links
-
-GitHub Repository
-
-"AI & Data Science Projects" (https://github.com/pranshidwivedi018-source/ai_data-science-project)
-
-LinkedIn
-
-"Pranshi Dwivedi" (https://www.linkedin.com/in/pranshi-dwivedi-46976b390)
+The important learning is not only the final accuracy, but the complete process of converting raw data into a usable predictive model.
 
 ---
 
-16. Author
+## 🚀 Future Improvements
 
-Pranshi Dwivedi
+The project can be improved by:
 
-M.Sc. Mathematics with AI & Data Science
-
-Interested in:
-
-- Data Science
-- Machine Learning
-- Artificial Intelligence
-- Data Analysis
-- Python
-- SQL
-
-I am continuously learning and building practical projects to strengthen my technical and problem-solving skills.
+- Comparing Logistic Regression with Decision Tree, Random Forest, SVM, and other classifiers.
+- Applying hyperparameter tuning.
+- Performing cross-validation.
+- Handling class imbalance if required.
+- Creating a user-friendly prediction interface.
+- Deploying the model as a web application.
+- Adding more detailed exploratory data analysis.
+- Comparing different feature-selection strategies using consistent validation.
 
 ---
 
-Conclusion
+## 👨‍💻 Team Contributions
 
-This repository represents my practical learning journey in Artificial Intelligence and Data Science.
+### Pranshi Dwivedi — Team Captain
+- Overall project coordination
+- Machine Learning workflow
+- Model integration
+- Final project organization
 
-The Titanic Survival Prediction project demonstrates a complete basic machine-learning workflow:
+### Anshika Shukla
+- Dataset understanding
+- Data preprocessing
+- Exploratory data analysis
 
-Data
- ↓
-Preprocessing
- ↓
-Exploratory Data Analysis
- ↓
-Feature Selection
- ↓
-Model Training
- ↓
-Prediction
- ↓
-Evaluation
+### Rishabh Tiwari
+- Feature engineering
+- Feature selection
+- Statistical analysis
 
-The repository will continue to grow with more advanced projects as I progress in my M.Sc. Mathematics with AI & Data Science journey.
+### Bhanu Pratap Singh Katiyar
+- Model evaluation
+- Testing
+- Documentation and presentation
+
+> Contributions can be adjusted to reflect the team's actual individual work.
 
 ---
 
-⭐ Thank you for visiting my repository!
+## 🎓 Learning Outcomes
 
-Feel free to explore the projects and follow my Data Science learning journey.
+Through this project, the team learned how to:
+
+- Understand a real-world dataset.
+- Identify and handle missing values.
+- Encode categorical data.
+- Transform and standardize numerical features.
+- Perform feature selection.
+- Train a classification model.
+- Generate predictions on unseen data.
+- Evaluate a model using accuracy, precision, recall, F1-score, and confusion matrix.
+- Save a trained Machine Learning model.
+- Document an ML project for GitHub.
+
+---
+
+## ✅ Conclusion
+
+This project demonstrates a complete Machine Learning pipeline for **Titanic Survival Prediction**.
+
+After preprocessing the Titanic dataset, engineering useful features, exploring feature-selection techniques, and training a **Logistic Regression** classifier, the model achieved **83.24% test accuracy** on 179 unseen test samples.
+
+The project provides a practical foundation for understanding how Machine Learning can transform historical data into predictive insights.
+
+---
+
+## ⭐ Project Highlights
+
+```text
+Dataset        → Titanic train.csv
+Problem        → Binary Classification
+Target         → Survived
+Model          → Logistic Regression
+Train/Test     → 80% / 20%
+Test Samples   → 179
+Accuracy       → 83.24%
+Evaluation     → Accuracy, Confusion Matrix, Classification Report
+Model Saving   → Pickle (.pkl)
+```
+
+---
+
+### 🚢 From Raw Passenger Data to Machine Learning Prediction
+
+**Data → Preprocessing → Features → Model → Prediction → Evaluation**
