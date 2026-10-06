@@ -12,7 +12,7 @@ The project demonstrates a practical ML workflow: **data preprocessing → featu
 |---|---:|---|---|
 | **Pranshi Dwivedi** | 25225100021 | CSJMA25000006150 | **Team Captain** |
 | Anshika Shukla | 2522510006 | CSJMA25000035668 | Team Member |
-| Rishabh Tiwari | 255225100025 | CSJMA25000006152 | Team Member |
+| Rishabh Tiwari | 25225100025 | CSJMA25000006152 | Team Member |
 | Bhanu Pratap Singh Katiyar | 25225100009 | CSJMA252500089656 | Team Member |
 
 ---
